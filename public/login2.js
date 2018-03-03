@@ -1,6 +1,9 @@
 /**
  * Created by Administrator on 2018/3/3.
  */
+/**
+ * Created by Administrator on 2018/3/3.
+ */
 //写入口函数 等待页面加载完成 防止全局污染
 
 $(function(){
@@ -67,10 +70,10 @@ $(function(){
                 }
                 if(info.error===1001){
                     alert("密码错误");
-                    $("form").data("bootstrapValidator").updateStatus("password","INVALID",'callback'); //字符串
+                    $("form").data("bootstrapValidator").updateStatus("password","INVALID",'callback');
                 }
                 if(info.success){
-                    location.href="index.html";
+                    //location.href="index.html";
                 }
             }
 

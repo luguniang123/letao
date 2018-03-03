@@ -3,15 +3,62 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>登录页</title>
+    <!--bootstrap bootstrap-validator都有样式，都要引入样式文件-->
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.min.css"/>
+    <link rel="stylesheet" href="./lib/nprogress/nprogress.css"/>
     <link rel="stylesheet" href="css/common.css"/>
 </head>
 <body class="body_bg">
+<div class="container">
+    <div class="col-md-4 col-md-offset-2">
+        <!--这里用栅格做登录框 属于 面板 居中-->
+        <div class="panel panel-primary mt_150">
+            <!--带标题的面板中复制框架  蓝色在情境效果  mt应该给panel面板加，不能给栅格加-->
+            <div class="panel-heading">
+                <h4 class="text-center ">后台管理系统</h4>
+            </div>
+            <div class="panel-body">
+                <!--全局css-水平排列的表单-->
+                <!--登录功能要用ajax做-->
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-3 control-label">用户名</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="username" autocomplete="off" class="form-control" id="username" placeholder="请输入用户名">
+                        <!--name属性根据后台接口文档 取消自动补全功能-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-3 control-label">密码</label>
+                        <!--label用于点任意位置都能获得焦点-->
+                        <div class="col-sm-9">
+                            <!--bootstrap中 input没有name属性，必须要写，且根据后台通过的接口文档的参数写 -->
+                            <input type="password" name="password" class="form-control" id="password" placeholder="请输入密码">
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-6">
+                            <!--改栅格就能控制位置-->
+                            <button type="reset" class="btn btn-default  pull-left">重置</button>
+                            <button type="submit" class="btn btn-primary  pull-right">登录</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+</div>
 
 
 <script src="lib/jquery/jquery.min.js"></script>
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<!--表单校验插件-->
+<script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+<script src="./lib/nprogress/nprogress.js"></script>
 <script src="js/common.js"></script>
 <script src="js/login.js"></script>
 </body>
