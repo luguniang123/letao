@@ -1,18 +1,19 @@
 /**
  * Created by Administrator on 2018/3/3.
  */
+
 $(function(){
-    NProgress.configure({ showSpinner: false });  //½ûÓÃ½ø¶È»·
+    NProgress.configure({ showSpinner: false });  //ç¦ç”¨è¿›åº¦ç¯
 
 
-$(document).ajaxStart(function(){  //¸ødocument×¢²áÊÂ¼ş£¬document   ÊÇÈ«¾ÖÊÂ¼ş¡£Ã¿Ò»¸öÔªËØ¶¼ÊÇ ½Úµã
-    console.log("ajax¿ªÊ¼ÁË");
-    NProgress.start(); //½ø¶ÈÌõ¿ªÆô  ²å¼ş×ÔÓĞ
-});
+    $(document).ajaxStart(function(){  //ç»™documentæ³¨å†Œäº‹ä»¶ï¼Œdocument   æ˜¯å…¨å±€äº‹ä»¶ã€‚æ¯ä¸€ä¸ªå…ƒç´ éƒ½æ˜¯ èŠ‚ç‚¹
+        console.log("ajaxå¼€å§‹äº†");
+        NProgress.start(); //è¿›åº¦æ¡å¼€å¯  æ’ä»¶è‡ªæœ‰
+    });
     $(document).ajaxStop(function(){
-        console.log("ajax½áÊøÁË");
+        console.log("ajaxç»“æŸäº†");
         //setTimeout(function(){
-            NProgress.done(); //½ø¶ÈÌõ½áÊø ²»Ğ´Ò»Ö±²»Í£¡£Ğ´ÔÚÕâÀï±íÊ¾Ã¿´ÎÒ³ÃæÒ»¼ÓÔØ£¬¾ÍÀ´½ø¶ÈÌõÉÁÏÖ5Ãë¡£Ë¼Ïë£ºÔÚµÇÂ¼·¢ËÍajaxÇ°È¥¼ÓÔØ
+        NProgress.done(); //è¿›åº¦æ¡ç»“æŸ ä¸å†™ä¸€ç›´ä¸åœã€‚å†™åœ¨è¿™é‡Œè¡¨ç¤ºæ¯æ¬¡é¡µé¢ä¸€åŠ è½½ï¼Œå°±æ¥è¿›åº¦æ¡é—ªç°5ç§’ã€‚æ€æƒ³ï¼šåœ¨ç™»å½•å‘é€ajaxå‰å»åŠ è½½
         //},500);
     });
 });
