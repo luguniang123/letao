@@ -2,9 +2,152 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>登录页</title>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.min.css"/>
+    <link rel="stylesheet" href="./lib/nprogress/nprogress.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <style>
+
+    </style>
 </head>
 <body>
+<!--侧边栏-->
+<div class="lt_aside">
+    <div class="brand">
+        <a href="index.html">黑马18期</a>
+    </div>
+    <div class="user">
+        <img src="./images/default.jpg" alt=""/>
+        <p>超级管理员</p>
+    </div>
+    <div class="nav">
+        <ul class="" >
+            <li>
+                <!--应该创建一个嵌套的 <span> 标签，并将图标类应用到这个 <span> 标签上-->
+                <a href="user.html"><span class="glyphicon glyphicon-user"></span> 用户管理</a>
+            </li>
+            <li >
+                <a href="javascript:;" class="now">
+                    <span class="glyphicon glyphicon-user"></span>
+                    分类管理
+                </a>
+                <div class="second" style="display: none">
+                    <a href="first.html">一级分类</a>
+                    <a href="second.html">二级分类</a>
+                </div>
+            </li>
+            <li><a href="product.html"><span class="glyphicon glyphicon-tags"></span> 商品管理</a></li>
+        </ul>
+    </div>
 
+</div>
+<!--主体区-->
+<div class="lt_main">
+    <div class="lt_header">
+        <a href="javascript:;" class="pull-left icon_menu"><span class="glyphicon glyphicon-align-justify"></span></a>
+        <a href="javascript:;" class="pull-right icon_logout"><span class="glyphicon glyphicon-share"></span></a>
+    </div>
+    <!--右边有个整体的padding-->
+    <div class="container-fluid">
+        <!--路径导航-->
+        <ol class="breadcrumb">
+            <li><a href="#">管理系统</a></li>
+            <li class="active">首页</li>
+        </ol>
+
+        <!--内容-->
+        <div class="lt_container">
+            <table class="table table-bordered table-hover">
+                <!--全局css -表格-鼠标悬停会有灰色背景的效果 鼠标悬停与条纹状表格（隔行变色）两个选择一个-->
+                <thead>
+                    <tr>
+                        <th width="10%">序号</th>
+                        <!--设置宽度的大小 用width10%即可 td会跟着标头的th跑-->
+                        <th width="30%">用户名</th>
+                        <th width="30%">手机号</th>
+                        <th width="20%">状态</th>
+                        <th width="10%">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--<tr>-->
+                        <!--<td>1</td>-->
+                        <!--<td>itcast</td>-->
+                        <!--<td>15102324243</td>-->
+                        <!--<td>正常</td>-->
+                        <!--<td>-->
+                            <!--<button class="btn btn-success btn-sm">启用</button>-->
+                            <!--<button class="btn btn-danger btn-sm">禁用</button>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                </tbody>
+            </table>
+        <!--分页标签，只要一个ul，指定id*****-->
+            <div class="text-right">
+                <!--***插件会把加载分页ul自动被设置成inline-block身上的**右对齐**干掉 办法是再加一个盒子-->
+                <ul id="pagination" >
+
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" tabindex="-1" id="userModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">温馨提示</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-danger">
+                    <span class="glyphicon glyphicon-info-sign"></span>
+                    您确定要执行此操作吗？
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary btn_confirm ">确定</button>
+           <!--自定义的类最好用下划线 因为插件中的类是中横线 -->
+            </div>
+        </div>
+    </div>
+</div>
+<!--准备模板引擎-->
+<!--i是从0-5的数字-->
+
+<script type="text/template" id="tpl">
+    {{ each rows v i}}
+    <tr>
+        <td>{{(page-1)*size+i+1 }}</td>
+        <td>{{v.username}}</td>
+        <td>{{v.mobile}}</td>
+        <td>{{v.isDelete===1?'正常':'禁用'}}</td>
+        <td data-id={{v.id}}>
+            <!--自定义属性-->
+            {{if v.isDelete ===0}}
+            <button class="btn btn-success btn-sm">启用</button>
+            {{else if v.isDelete ===1}}
+            <button class="btn btn-danger btn-sm">禁用</button>
+            {{/if}}
+        </td>
+    </tr>
+    {{/each}}
+</script>
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<!--表单校验插件-->
+<script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<script src="./lib/nprogress/nprogress.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
+<!--引入模板引擎js-->
+<script src="js/common.js"></script>
+<script src="js/user.js"></script>
 </body>
 </html>
