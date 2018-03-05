@@ -109,3 +109,6 @@ a:link,a:visited,a:hover,a:active{
 .table th{
     text-align: center;
 }
+.mb_20{
+    margin-top: 20px;
+}
