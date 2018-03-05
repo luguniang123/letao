@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>二级分类</title>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.min.css"/>
+    <link rel="stylesheet" href="./lib/nprogress/nprogress.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <style>
+
+    </style>
+</head>
+<body>
+<!--侧边栏-->
+<div class="lt_aside">
+    <div class="brand">
+        <a href="index.html">黑马18期</a>
+    </div>
+    <div class="user">
+        <img src="./images/default.jpg" alt=""/>
+        <p>超级管理员</p>
+    </div>
+    <div class="nav">
+        <ul class="" >
+            <li>
+                <!--应该创建一个嵌套的 <span> 标签，并将图标类应用到这个 <span> 标签上-->
+                <a href="user.html"><span class="glyphicon glyphicon-user"></span> 用户管理</a>
+            </li>
+            <li >
+                <a href="javascript:;">
+                    <span class="glyphicon glyphicon-user"></span>
+                    分类管理
+                </a>
+                <div class="second" style="display: block">
+                    <a href="first.html"  >一级分类</a>
+                    <a href="second.html"  class="now">二级分类</a>
+                </div>
+            </li>
+            <li><a href="product.html"><span class="glyphicon glyphicon-tags"></span> 商品管理</a></li>
+        </ul>
+    </div>
+
+</div>
+<!--主体区-->
+<div class="lt_main">
+    <div class="lt_header">
+        <a href="javascript:;" class="pull-left icon_menu"><span class="glyphicon glyphicon-align-justify"></span></a>
+        <a href="javascript:;" class="pull-right icon_logout"><span class="glyphicon glyphicon-share"></span></a>
+    </div>
+    <!--右边有个整体的padding-->
+    <div class="container-fluid">
+        <!--路径导航-->
+        <ol class="breadcrumb">
+            <li><a href="#">管理系统</a></li>
+            <li><a href="#">分类管理</a></li>
+            <li class="active">一级分类</li>
+        </ol>
+
+        <!--内容-->
+        <div class="lt_content">
+            <button  class="btn btn-default btn_add mb_20">添加分类</button>
+            <!--//点这个添加的时候就可以去申请ajax-->
+            <table class="table table-bordered table-hover">
+                <!--全局css -表格-鼠标悬停会有灰色背景的效果 鼠标悬停与条纹状表格（隔行变色）两个选择一个-->
+                <thead>
+                <tr>
+                    <th width="20%">序号</th>
+                    <!--设置宽度的大小 用width10%即可 td会跟着标头的th跑-->
+                    <th width="30%">一级分类名称</th>
+                    <th width="30%">二级分类名称</th>
+                    <th width="30%">二级分类LOGO</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>户外馆</td>
+                    <td>ADI</td>
+                    <td><img src="images/none.png" width="50" alt=""/></td>
+                </tr>
+                </tbody>
+            </table>
+            <!--分页标签，只要一个ul，指定id*****-->
+            <div class="text-right">
+                <!--***插件会把加载分页ul自动被设置成inline-block身上的**右对齐**干掉 办法是再加一个盒子-->
+                <ul id="paginator" >
+
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+<!--登录模态框-->
+<div class="modal fade" tabindex="-1" id="userModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">温馨提示</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-danger">
+                    <span class="glyphicon glyphicon-info-sign"></span>
+                    您确定要执行此操作吗？
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary btn_confirm ">确定</button>
+                <!--自定义的类最好用下划线 因为插件中的类是中横线 -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--添加分类模态框-->
+<div class="modal fade" tabindex="-1" id="secondModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">添加分类</h4>
+            </div>
+            <div class="modal-body">
+                <!--里面是一个表单-->
+                <form id="form">
+                    <div class="form-group">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                               <!--//把这里的文字***写到另一个标签里，否则设置button 的text的时候把字体图标也一起覆盖了-->
+                               <span class="dropdown_text">请选择一级分类</span>
+        0                        <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <!--<li><a href="javascript:;">运动馆</a></li>-->
+                                 <!--·      再挖个坑-->
+                            </ul>
+                            <input type="hidden" name="categoryId" id="hidden"/>
+                            <!--后台还需要一个categoryId，之类都是button，所以需要写一个input，name属性categoryId，一边传到后台-->
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!--每个form-group就是一行-->
+                        <!--<input type="hidden" name="brandName" class="form-control" >-->
+                        <!--后台需要的是brandName,name是提交给后台的 改后台需要的名字-->
+                        <input type="text" name="brandName" class="form-control"  placeholder="请输入二级分类的名称">
+                    </div>
+
+                    <div class="form-group">
+                        <!--思路：想要button的样式，input:file的功能，就让他们层叠在一起，下一个opacity：0;-->
+                        <div class="file_box">
+                            <button class="btn btn-default">上传图片</button>
+                            <input type="file" id="iframe-transport" data-url="/category/addSecondCategoryPic" name="pic1"  class="btn btn-default" value="上传图片" multiple/>
+                            <!--这里注意蹦出来是各种图片，用  ***input：file-->
+                            <!--name根据接口文档，id是jquery-fileupload插件要求有一个input的框，id="fileupload" -->
+                            <!--data-url指定图片上传时的接口地址 multiple多文件上传-->
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <img src="images/none.png" width="100" height="100 " alt=""/>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <!--H5 form:给input指定form  相当于把两个按钮放在form里面，这里放外面是为了省写样式 也可以吧form范围变大 modal-body这里-->
+                <button type="submit" form="form" class="btn btn-primary btn_add">添加</button>
+                <!--0  自定义的类最好用下划线 因为插件中的类是中横线 -->
+            </div>
+        </div>
+    </div>
+</div>
+<!--二级分类页面渲染-->
+<script type="text/template" id="tpl">
+    {{ each rows v i}}
+    <tr>
+        <td>{{(page-1)*size+i+1 }}</td>
+        <td>{{v.categoryName}}</td>
+        <td>{{v.brandName}}</td>
+        <td><img src="{{v.brandLogo?v.brandLogo:'images/none.png'}}" width="50" alt=""/></td>
+    </tr>
+    {{/each}}
+</script>
+
+<!--模态框一级分类渲染-->
+<script type="text/template" id="tp2">
+    {{ each rows v i}}
+
+    <li data-id="{{v.id}}"><a href="javascript:;">{{v.categoryName}}</a></li>
+
+    {{/each}}
+</script>
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<!--表单校验插件-->
+<script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<script src="./lib/nprogress/nprogress.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
+<script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+<script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
+<script src="lib/jquery-fileupload/jquery.iframe-transport.js"></script>
+<!--引入模板引擎js-->
+<script src="js/common.js"></script>
+<script src="js/second.js"></script>
+</body>
+</html>
