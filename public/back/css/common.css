@@ -33,9 +33,10 @@ a:link,a:visited,a:hover,a:active{
     width: 180px;
     height: 100%;
     background-color: #222d32;
-    position: absolute;
+    position: fixed;
     top: 0;
     left:0;
+    z-index: 999;
 }
 .lt_aside .brand{
 
@@ -93,14 +94,27 @@ a:link,a:visited,a:hover,a:active{
     height: 100%;
     background-color: pink;
     padding-left: 180px;
+    padding-top: 70px;
 }
 .lt_header{
     height: 50px;
     background-color: #3c8dbc;
     line-height: 50px;
-    padding-left: 20px;
+    padding-left:200px;
     padding-right: 20px;
+    position: fixed;
+    width: 100%;
+    /*w100%,右边的就出去了  设置padding值   ；固定定位问题，下面的对象就上去了*/
+    top:0;
+    left:0;
+transition:all 1s;
+/*//设置过渡*/
 }
+.lt_main .lt_header.now{
+    padding-left: 20px;
+    /*点击左上键的隐藏侧边栏时候，小图标还在原地，设置改变padding值  写*/
+}
+
 .lt_header a{
     color:white;
     font-size: 16px;

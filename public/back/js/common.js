@@ -16,4 +16,12 @@ $(function(){
         NProgress.done(); //进度条结束 不写一直不停。写在这里表示每次页面一加载，就来进度条闪现5秒。思想：在登录发送ajax前去加载
         //},500);
     });
+
+
+    $(".icon_menu").on("click",function(){
+
+
+        $(".lt_header").toggleClass("now");
+
+    })
 });
