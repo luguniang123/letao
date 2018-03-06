@@ -1,0 +1,50 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+html,body{
+    height: 100%;
+}
+body{
+    background-color: #fff;
+}
+
+img{
+    display: block;
+    width: 100%;
+}
+.lt_main .nav{
+    padding: 10px;
+}
+.lt_main .nav li{
+    width: 33.33%;
+    float: left;
+    list-style: none;
+}
+.product{
+    padding: 10px;
+
+}
+.product a{
+    float: left;
+    width: 48%;
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.product a:nth-child(odd){
+    margin-right: 4%;
+}
+.item button{
+    display: block;
+    margin: 0 auto;
+}
+.price{
+    color:red;
+}
+.oldPrice{
+   color:#ccc;
+}
