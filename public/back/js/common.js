@@ -23,5 +23,24 @@ $(function(){
 
         $(".lt_header").toggleClass("now");
 
+    });
+
+    //二级菜单的显示与隐藏
+    //思路：找到二级分类的a标签  prev()前一个兄弟  $(this).next()找回到div
+    $(".second").prev().on("click",function(){
+        $(this).next().slideToggle();
+
     })
+
+    //找到icon_menu注册点击事件 侧边栏隐藏 让lt_main的 padding-left:0;为了让他回去要给他一个类****  注意找不到的时候找更大的盒子*****
+    $(".icon_menu").on("click",function(){
+        $(".lt_aside").toggleClass("now");  //显示隐藏hide show 宽高会变小不好看给个left让它离开
+        $(".lt_main").toggleClass("now");
+    });
+
+//退出功能
+$(".icon_logout").on("click",function(){  //点击右边的小按钮出来模态框，注意不是toggle
+    $('#myModal').modal('show');
+})
+
 });
