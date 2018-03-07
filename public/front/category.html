@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+
+    <title>乐淘商城-分类页</title>
+    <link rel="stylesheet" href="lib/fa/css/font-awesome.css"/>
+    <link rel="stylesheet" href="lib/mui/css/mui.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+
+    <link rel="stylesheet" href="css/category.css"/>
+</head>
+<body>
+<div class="lt_container">
+    <!--头部-->
+    <div class="lt_header">
+        <!--mui提供少量字体图标，文档-icon图标-->
+        <!--javascript是伪协议的意思 href="javascript:history.go(-1);"去上一页 void(0)是undefined的意思  因为老版本的浏览器var undefined=“aa”;可以赋值，所以undefined就不安全，用void(0)-->
+        <a href="javascript:history.go(-1);" class="icon_left"><span class="mui-icon mui-icon-back"></span></a>
+        <a href="search.html" class="icon_right"><span class="fa fa-search"></span></a>
+        <h4>乐淘分类</h4>
+    </div>
+
+    <div class="lt_main">
+        <div class="nav">
+            <!--区域滚动-->
+            <div class="mui-scroll-wrapper">
+                <div class="mui-scroll">
+                    <!--这里放置真实显示的DOM内容-->
+                    <ul class="first">
+                        <!--<li class="now"><a href="javascript:;">运动馆</a></li>-->
+                        <!--<li><a href="javascript:;">运动馆</a></li>-->
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="content">
+            <div class="mui-scroll-wrapper">
+                <div class="mui-scroll">
+                    <!--这里放置真实显示的DOM内容-->
+                    <ul class="second">
+                        <li><a href="#">
+                            <img src="images/brand1.png" alt=""/>
+                            <p>耐克</p>
+                        </a></li>
+                        <li><a href="#"><img src="images/brand2.png" alt=""/></a>
+                            <p>阿迪</p></li>
+                        <li><a href="#"><img src="images/brand3.png" alt=""/></a><p>新百伦</p></li>
+                        <li><a href="#"><img src="images/brand4.png" alt=""/></a><p>哥伦比亚</p></li>
+                        <li><a href="#"><img src="images/brand5.png" alt=""/></a><p>匡威</p></li>
+                        <li><a href="#"><img src="images/brand6.png" alt=""/></a><p>阿迪王</p></li>
+                        <li><a href="#"><img src="images/brand7.png" alt=""/></a><p>李宁</p></li>
+                        <li><a href="#"><img src="images/brand8.png" alt=""/></a><p>百伦王</p></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--尾部-->
+    <div class="lt_footer">
+        <ul class="clearfix">
+            <li >
+                <a href="index.html">
+                    <span class="fa fa-home"></span>
+                    <p>首页</p>
+                </a>
+            </li>
+            <li class="now">
+                <a href="category.html">
+                    <span class="fa fa-bars"></span>
+                    <p>分类</p>
+                </a>
+            </li>
+            <li>
+                <a href="cart.html">
+                    <span class="fa fa-shopping-cart"></span>
+                    <p>购物车</p>
+                </a>
+            </li>
+            <li>
+                <a href="user.html">
+                    <span class="fa fa-user"></span>
+                    <p>会员中心</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--渲染一级分类-->
+<!--模板引擎也能用三元表达式   要想在第一个上面加类，就在第一个上面判断一下 -->
+<script type="text/html" id="firstTpl" >
+
+{{each rows v i}}
+    <!--存一个id，之后点这个右边出现对应的-->
+    <li data-id="{{v.id}}" class="{{i==0?'now':''}}"><a href="javascript:;">{{ v.categoryName}}</a></li>
+{{/each}}
+</script>
+<!--渲染二级分类  -->
+<!--如果没有内容应该给用户一个提示-->
+<script type="text/html" id="secondTpl" >
+
+    {{if rows.length===0}}
+    <p class="tips">该分类下没有更多的数据</p>
+    {{/if}}
+    {{each rows v i}}
+    <li>
+        <a href="#">
+        <img src="{{v.brandLogo}}" alt=""/>
+        <p>{{v.brandName}}</p>
+        </a>
+    </li>
+    {{/each}}
+</script>
+<script src="lib/mui/js/mui.js"></script>
+<script src="lib/zepto/zepto.min.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
+<script src="js/common.js"></script>
+<script src="js/category.js"></script>
+</body>
+</html>

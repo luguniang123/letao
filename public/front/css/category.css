@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+body,html{
+    height: 100%;
+}
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.nav{
+    width: 90px;
+    height: 100%;
+    /*background-color: blue;*/
+    float: left;
+    position: relative;
+}
+.nav .mui-scroll ul li a{
+    display: block;
+    width: 90px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-bottom: 1px solid #f00;
+    border-right: 1px solid #f00;
+    background-color: pink;
+}
+.nav .mui-scroll ul li.now a{
+    border-right: none;
+    background-color: white;
+
+}
+.content{
+    height: 100%;
+    /*background-color: green;*/
+    overflow: hidden;
+    position: relative;
+    background-color: #fff;
+}
+.content .mui-scroll ul li{
+    float: left;
+    width: 33.33%;
+    text-align: center;
+
+}
+.tips{
+    padding: 10px;
+    color: #000;
+}

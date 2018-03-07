@@ -37,7 +37,7 @@ $(function(){
     render();
 
 
-    //添加分类功能
+    //外面添加分类功能  模态框显示
     $(".btn_add").on("click",function(){
         $("#firModal").modal('show');
     });
@@ -69,7 +69,7 @@ $(function(){
             url:'/category/addTopCategory',
             data:$form.serialize(),
             success:function(info){
-               // console.log(info);
+                console.log(info);
                 if(info.success){
                 //关闭模态框
                 $("#firModal").modal('hide');
