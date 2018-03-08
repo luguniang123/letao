@@ -28,7 +28,7 @@ $(function () {
 
       console.log(info);
 
-      $(".mui-scroll").html( template("tpl", info));
+      $(".mui-scroll ").html( template("tpl", info));
 
       //初始化轮播图
       mui(".mui-slider").slider({
