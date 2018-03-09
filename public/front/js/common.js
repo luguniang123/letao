@@ -15,3 +15,26 @@ var gallery = mui('.mui-slider');
 gallery.slider({
     interval:2000//自动轮播周期，若为0则不自动播放，默认为0；
 });
+
+//封装地址栏
+function getSearch(key){
+    var search=location.search;
+  //  console.log(search);
+    search=decodeURI(search);
+    //去掉问号
+    var arr=search.split("?")[1];
+
+    //把字符串根据&切割成数组
+    var array=arr.split("&");
+  //  console.log(array);
+    //5遍历数组把等号切割成：
+    var obj={};
+    array.forEach(function(e,i){
+      //  console.log(e, i);
+        arr1= e.split("=");
+        var k=e.split("=")[0];
+        var v=e.split("=")[1];
+        obj[k]=v;
+    });
+    return obj[key];
+}

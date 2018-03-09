@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script >
+    //localStorage是存储在自己浏览器的永久存储的内容
+    localStorage.setItem('name','zs');
+    localStorage.getItem("name"); //只能存字符串类型数据，如果不是字符串，自动转成字符串类型存储
+    //如果要存储对象等复杂数据类型，就需要1先转换成字符串类型JSON.stringify();2.JSON.parse();取出是转成字符串
+    var obj={name:'zs',age:18};
+    var str=JSON.stringify(obj);
+    localStorage.setItem("userInfo",str);
+    localStorage.getItem("userInfo");
+//取出localStorage的数据
+    var obj=JSON.parse(localStorage.getItem("userInfo"));
+    console.log(obj);
+localStorage.removeItem("name");  //移除一个
+localStorage.clear();  //全部清除，慎用
+</script>
+
+
+</body>
+</html>

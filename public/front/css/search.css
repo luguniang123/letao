@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+/*.lt_search{*/
+    /*padding: 10px;*/
+    /*/!*border-radius: 10px;*!/*/
+    /*/!*height: 34px;*!/*/
+    /*position: relative;*/
+/*}*/
+/*.lt_search input{*/
+    /*height: 34px;*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*/!*去掉默认的margin和padding*!/*/
+    /*border: 1px solid #007aff;*/
+    /*padding-left: 15px;*/
+    /*font-size: 12px;*/
+    /*border-radius: 5px;*/
+/*}*/
+/*.lt_search button{*/
+    /*position: absolute;*/
+    /*top:10px;*/
+    /*right: 11px;*/
+    /*border-radius:0 5px  5px 0;*/
+/*}*/
+.lt_history{
+    padding: 10px;
+    font-size: 10px;
+    color:#666;
+}
+.mui_rab{
+    font-size: 10px;
+}
+.content ul{
+    border: 1px dashed #f00;
+    border-bottom: none;
+    /*多了一个最后底边框去掉*/
+}
+.content ul li{
+    border-bottom: 1px dashed #f00;
+    padding-left: 10px;
+    height: 30px;
+    line-height: 30px;
+}
+.btn_delete{
+    height: 30px;
+    line-height: 30px;
+}

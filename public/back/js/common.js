@@ -38,9 +38,40 @@ $(function(){
         $(".lt_main").toggleClass("now");
     });
 
-//退出功能
+//退出功能 1显示模态框
 $(".icon_logout").on("click",function(){  //点击右边的小按钮出来模态框，注意不是toggle
-    $('#myModal').modal('show');
-})
+    $('#logoutModal').modal('show');
+    //$(".btn_logout").off().on("click",function(){} 事件里面不要再写事件 如果非要写在里面就现解绑外面的事件。
+});
+//退出 发ajax请求，告诉服务器要退出，让服务器把对应的session销毁
+    $(".btn_logout").on("click",function(){
+        $.ajax({
+            type:'get',
+            url:'/employee/employeeLogout',
+            success:function(info){
+                console.log(info);
+                if(info.success){
+                    location.href="login.html";
+                }
+            }
+        })
+
+    });
+
+   // 发送ajax请求，查询管理员是否登录
+    if(location.href.indexOf("login.html")==-1){
+        $.ajax({
+            type:'get',
+            url:'/employee/checkRootLogin',
+            success:function(info){
+                console.log(info);
+                //判断info.eeror是否是400
+                if(info.error==400){
+                    location.href="login.html";
+                }
+            }
+        })
+    }
+
 
 });

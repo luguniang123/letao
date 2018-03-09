@@ -5,11 +5,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
 
-    <title>搜索中心</title>
+    <title>商品列表</title>
     <link rel="stylesheet" href="lib/fa/css/font-awesome.css"/>
     <link rel="stylesheet" href="lib/mui/css/mui.css"/>
     <link rel="stylesheet" href="css/common.css"/>
-    <link rel="stylesheet" href="css/search.css"/>
+    <link rel="stylesheet" href="css/searchList.css"/>
 </head>
 <body>
 <div class="lt_container">
@@ -26,16 +26,36 @@
         <div class="mui-scroll-wrapper">
             <div class="mui-scroll">
                 <!--这里放置真实显示的DOM内容-->
+                <!--搜索-->
                 <div class="lt_search mui-clearfix">
                     <input type="text" placeholder="请输入搜索关键字"/>
                     <button class="mui-btn mui-btn-primary">搜索</button>
                 </div>
+                <!--排序-->
+                <div class="lt_sort">
+                    <ul class="mui-clearfix">
+                        <li ><a  href="javascript:;">上架时间 <span class="fa fa-angle-down"></span></a></li>
+                        <li><a data-type="price" href="javascript:;">价格 <span class="fa fa-angle-down"></span></a></li>
+                        <li><a data-type="num" href="javascript:;">库存 <span class="fa fa-angle-down"></span></a></li>
+                        <li><a href="javascript:;">折扣 <span class="fa fa-angle-down"></span></a></li>
 
-                <div class="lt_history mui-clearfix">
+                    </ul>
+                </div>
 
-                    <!--挖个坑-->
+                <!--商品区-->
+                <div class="product mui-clearfix">
+                    <div class="loading"></div>
+                    <!--<a class="item" href="#">-->
+                        <!--<img src="images/product.jpg" alt=""/>-->
+                        <!--&lt;!&ndash;mui-ellipsis-2是mui的类剪切文字2行多余用...表示&ndash;&gt;-->
+                        <!--<p class="mui-ellipsis-2">adidas阿迪达斯 男式 场下休闲篮球鞋S83700场下休闲篮球鞋S83700 </p>-->
+                        <!--<span class="price">&yen;560</span>-->
+                        <!--<span class="oldPrice">&yen;580</span>-->
+                        <!--<button class="mui-btn mui-btn-primary">立即购买</button>-->
+                    <!--</a>-->
 
                 </div>
+
             </div>
         </div>
     </div>
@@ -76,37 +96,31 @@
 <!--0:1 -->
 <!--1:2 -->
 <!--2:3  现在直接就是拿到索引后面的值就是写v -->
+
+<!--bug一定要把高度写死否则布局就乱了 proName -->
+<!--等于0，就执行提示信息  -->
 <script type="text/html" id="tpl" >
+    {{ if data.length==0}}
+    <p>没有更多的商品信息</p>
+    {{/if}}
 
-{{ if arr.length===0}}
-   <p>没有历史记录</p>
-   {{/if}}
-{{if arr.length >0 }}
-    <div class="title mui-clearfix">
-
-        <span class="mui-pull-left ">搜索历史</span>
-
-        <span class="mui-pull-right btn_empty"><span class=" mui-icon mui-icon-trash mui_rab "></span>清空记录</span>
-    </div>
-
-    <div class="content">
-
-        <ul >
-            {{each arr v i}}
-            <li class="mui-clearfix">
-                <a href="searchList.html?key={{v}}" class="mui-pull-left">{{v}}</a>
-                <span data-index="{{i}}" class="mui-icon mui-icon-closeempty mui-pull-right btn_delete"></span>
-            </li>
-            {{/each}}
-        </ul>
-    </div>
-{{ /if}}
+    {{ each data v i}}
+    <!--//蹦到商品详情页，同时传id-->
+    <a class="item" href="product.html?productId={{v.id}}">
+        <img src="{{v.pic[0].picAddr}}" alt=""/>
+        <!--mui-ellipsis-2是mui的类剪切文字2行多余用...表示-->
+        <p class="mui-ellipsis-2 proName">{{v.proName}} </p>
+        <span class="price">&yen;{{v.price}}</span>
+        <span class="oldPrice">&yen;{{v.oldPrice}}</span>
+        <button class="mui-btn mui-btn-primary">立即购买</button>
+    </a>
+    {{/each}}
 </script>
 
 <script src="lib/mui/js/mui.js"></script>
 <script src="lib/zepto/zepto.min.js"></script>
 <script src="lib/artTemplate/template-web.js"></script>
 <script src="js/common.js"></script>
-<script src="js/search.js"></script>
+<script src="js/searchList.js"></script>
 </body>
 </html>

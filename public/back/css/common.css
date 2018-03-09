@@ -123,6 +123,19 @@ transition:all 1s;
     padding-left: 20px;
     /*点击左上键的隐藏侧边栏时候，小图标还在原地，设置改变padding值  写*/
 }
+.echarts1,.echarts2{
+/*//为echarts插件准备宽高固定的容器*/
+    width: 45%;
+    height: 400px;
+}
+.echarts1{
+    float: left;
+
+}
+.echarts2{
+    float: right;
+
+}
 
 .lt_header a{
     color:white;
