@@ -18,6 +18,9 @@
     font-size: 12px;
     padding: 5px;
 }
+.size span.now{
+    background-color: #069;
+}
 .num .tips{
     color:#666;
     font-size: 12px;

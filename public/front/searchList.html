@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/searchList.css"/>
 </head>
 <body>
+
 <div class="lt_container">
     <!--头部-->
     <div class="lt_header">
@@ -44,7 +45,7 @@
 
                 <!--商品区-->
                 <div class="product mui-clearfix">
-                    <div class="loading"></div>
+                    <!--<div class="loading"></div>-->
                     <!--<a class="item" href="#">-->
                         <!--<img src="images/product.jpg" alt=""/>-->
                         <!--&lt;!&ndash;mui-ellipsis-2是mui的类剪切文字2行多余用...表示&ndash;&gt;-->
@@ -54,12 +55,12 @@
                         <!--<button class="mui-btn mui-btn-primary">立即购买</button>-->
                     <!--</a>-->
 
-                </div>
+                <!--</div>-->
 
             </div>
         </div>
     </div>
-
+</div>
     <!--尾部-->
     <div class="lt_footer">
         <ul class="clearfix">
@@ -82,7 +83,7 @@
                 </a>
             </li>
             <li>
-                <a href="user.html">
+                <a href="user.html" class="now">
                     <span class="fa fa-user"></span>
                     <p>会员中心</p>
                 </a>
@@ -90,6 +91,7 @@
         </ul>
     </div>
 </div>
+
 <!--渲染一级分类-->
 <!--模板引擎也能用三元表达式   要想在第一个上面加类，就在第一个上面判断一下 -->
 <!--list是属性 相当于遍历的是 arr  (3) [1, 2, 3]-->
@@ -121,6 +123,6 @@
 <script src="lib/zepto/zepto.min.js"></script>
 <script src="lib/artTemplate/template-web.js"></script>
 <script src="js/common.js"></script>
-<script src="js/searchList.js"></script>
+<script src="js/searchList2.js"></script>
 </body>
 </html>

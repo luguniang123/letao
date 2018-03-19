@@ -11,8 +11,8 @@ $(function(){
 
     var param={};
     param.page=1;
-    param.pageSize=100;
-    param.proName=key;  //输入框的值
+    param.pageSize=4;
+    param.proName=key;  //输入框的值-变量
 
     render();  //页面一进来就渲染一次
 

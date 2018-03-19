@@ -34,6 +34,7 @@ html,body{
     bottom:0;
     left:0;
     background-color: #069;
+    z-index: 999;
 }
 .lt_main{
     /*希望中间部分是100%，所以padding给最外面的盒子*/

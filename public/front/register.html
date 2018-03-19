@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+
+    <title>登录</title>
+    <link rel="stylesheet" href="lib/fa/css/font-awesome.css"/>
+    <link rel="stylesheet" href="lib/mui/css/mui.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/register.css"/>
+</head>
+<body>
+<div class="lt_container">
+    <!--头部-->
+    <div class="lt_header">
+        <!--mui提供少量字体图标，文档-icon图标-->
+        <!--javascript是伪协议的意思 href="javascript:history.go(-1);"去上一页 void(0)是undefined的意思  因为老版本的浏览器var undefined=“aa”;可以赋值，所以undefined就不安全，用void(0)-->
+        <a href="javascript:history.go(-1);" class="icon_left"><span class="mui-icon mui-icon-back"></span></a>
+        <h4>注册</h4>
+
+    </div>
+
+    <div class="lt_main">
+        <!--mui输入表单模板-->
+        <form class="myForm">
+            <div class="mui-input-row">
+                <!--接口要求传password 和username 这里要写上name属性 -->
+                <!--autocomplete="off"关闭提示-->
+                <input type="text" name="username" autocomplete="off" class="mui-input-clear" placeholder="请输入用户名">
+            </div>
+
+            <div class="mui-input-row">
+                <input type="password" id="password" name="password" class="mui-input-password" placeholder="请输入密码">
+            </div>
+
+            <div class="mui-input-row">
+                <input type="password" id="repassword"  class="mui-input-password" placeholder="请确认密码">
+            </div>
+
+            <div class="mui-input-row">
+                <input type="password" name="mobile" placeholder="请输入手机号">
+            </div>
+
+            <div class="mui-input-row">
+                <input type="password" name="vCode" placeholder="请输入验证码">
+                <button class="mui-btn mui-btn-primary btn_getcode">获取验证码</button>
+            </div>
+            <div class="mui-button-row">
+                <button class="mui-btn mui-btn-primary btn_register" >注册</button>
+            </div>
+
+            <div class="mui-button-row" style="font-size: 12px;margin-top: 10px">
+                <span class="mui-pull-left" >
+                    <input type="checkbox"/>我同意《会员服务协议》
+                </span>
+                <span class="mui-pull-right"><a href="login.html">立即登录</a></span>
+            </div>
+        </form>
+<!--**前端拿到手机号给服务器，服务器会先随机生成验证码，生成短信内容，把消息和手机号给运营商，-->
+        <!--运营商把消息发到对应的手机号，告诉服务器法是否发送成功。服务器拿到手机发送来的验证码，-->
+        <!--与自己生成的验证码对比，说明手机号是对的-->
+
+
+
+    </div>
+
+
+
+    <!--尾部-->
+    <div class="lt_footer">
+        <ul class="clearfix">
+            <li >
+                <a href="index.html">
+                    <span class="fa fa-home"></span>
+                    <p>首页</p>
+                </a>
+            </li>
+            <li >
+                <a href="category.html">
+                    <span class="fa fa-bars"></span>
+                    <p>分类</p>
+                </a>
+            </li>
+            <li>
+                <a href="cart.html">
+                    <span class="fa fa-shopping-cart"></span>
+                    <p>购物车</p>
+                </a>
+            </li>
+            <li class="now">
+                <a href="user.html">
+                    <span class="fa fa-user"></span>
+                    <p>会员中心</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+<script src="lib/mui/js/mui.js"></script>
+<script src="lib/zepto/zepto.min.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
+<script src="js/common.js"></script>
+<script src="js/register.js"></script>
+</body>
+</html>

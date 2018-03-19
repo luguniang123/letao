@@ -90,7 +90,7 @@ $(function(){
 render();
 
     //点击添加商品，出现模态框
-    $(".btn_add").click(function(){
+    $(".btn_add1").click(function(){
         $("#productModal").modal('show');
         //发送ajax请求 请求二级分类数据
         $.ajax({
@@ -101,7 +101,7 @@ render();
                 pageSize:100
             },
             success:function(info){
-                console.log(info);
+              //  console.log(info);
                 $(".dropdown-menu").html( template("tp2",info));
             }
         })
@@ -127,14 +127,19 @@ render();
         //e：事件对象
         //data：图片上传后的对象，通过e.result.picAddr可以获取上传后的图片地址
         done:function (e, data) {
-            console.log(data.result);
+            //console.log(data.result);
+
             if(result.length>=3){
                 return;
             }
 
             //获取到上传图片的地址，往img_box里面添加图片  本地显示图片
+
             var pic=data.result.picAddr;
-            $('<img src="'+pic+'" width="100" height="100 " alt=""/>').appendTo(".img_box"); //appendTo子元素添加到父元素 父元素append（子元素）
+
+            console.log(pic);
+            //$('<img src="'+pic+'" width="100" height="100 " alt=""/>').appendTo(".img_box"); //appendTo子元素添加到父元素 父元素append（子元素）
+            $(".img_box").append('<img src="'+pic+'" width="100" height="100" alt="">');
         //把******img标签放到父元素中去
             result.push(data.result);   //把后台返回的结果放到数组中这两个结果是后台接口要求传的参数
             console.log(result);
@@ -150,7 +155,8 @@ render();
     });
 
     //表单校验
-    $("form").bootstrapValidator({
+    var $form=$("form");
+    $form.bootstrapValidator({
         //1. //注意插件禁用的隐藏的，是不校验的。指定不校验的类型，
 //默认为[':disabled', ':hidden', ':not(:visible)'],可以不设置
         excluded: [],
@@ -247,13 +253,14 @@ render();
     $("form").on('success.form.bv', function (e) {
         e.preventDefault();
 
-        var param=$("form").serialize();    //表单序列化
+        var param=$form.serialize();    //表单序列化
         param+="&picName1="+result[0].picName+"&picAddr1="+result[0].picAddr;
         param+="&picName2="+result[1].picName+"&picAddr2="+result[1].picAddr;
-        param+="&picName2="+result[2].picName+"&picAddr2="+result[2].picAddr;
+        param+="&picName3="+result[2].picName+"&picAddr3="+result[2].picAddr;
+        console.log(param);
         //使用ajax提交逻辑
         $.ajax({
-            type:"POST",
+            type:"post",
             url:"/product/addProduct",
             data:param,   //上传的参数可以是品号的字符串组成的变量
             success:function(info){
@@ -263,7 +270,7 @@ render();
                     $("#productModal").modal('hide');
                     page=1;
                     render();
-                    $("#form").data('bootstrapValidator').resetForm(true);
+                    $("form").data('bootstrapValidator').resetForm(true);
 
                     $(".dropdown_text").text("请选择二级分类");
                     $(".img_box img").remove();   //移除不能写empty 因为还有一个input:hidden

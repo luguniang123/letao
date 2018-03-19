@@ -31,6 +31,8 @@
                 <!--轮播图就去index.html里面拿过来->
 
                     <!--如要支持循环播放需要加类 还要多加两张图片-->
+                <!--轮播图-->
+                <!--挖了个坑-->
                 <div class="mui-slider">
                     <div class="mui-slider-group mui-slider-loop">
                         <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="images/banner6.png" /></a></div>
@@ -98,7 +100,7 @@
     <div class="lt_cart">
         <button class="mui-btn mui-btn-link">去购物车</button>
         <div class="mui-pull-right">
-            <button class="mui-btn mui-btn-danger">加入购物车</button>
+            <button class="mui-btn mui-btn-danger btn_add_cart">加入购物车</button>
             <button class="mui-btn mui-btn-warning">立即购买</button>
         </div>
 
@@ -113,8 +115,56 @@
 
 <!--bug一定要把高度写死否则布局就乱了 proName -->
 <!--等于0，就执行提示信息  -->
+<!--模板直接用对象的属性-->
 <script type="text/html" id="tpl" >
+    <!--轮播图-->
+    <div class="mui-slider">
+        <div class="mui-slider-group mui-slider-loop">
+            <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="{{pic[pic.length-1].picAddr }}" /></a></div>
+           {{ each pic v i}}
+            <div class="mui-slider-item"><a href="#"><img src="{{ v.picAddr}}" /></a></div>
+            {{/each}}
+            <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="{{pic[0].picAddr }}" /></a></div>
+        </div>
 
+        <!-- 另外，缺点是小圆点滚动之后，如果要好看的用swiper插件 mui官网 小手机 右键copy-outerHTML可以拷贝到本身及路面的内容 以下为小圆点-->
+        <div class="mui-slider-indicator">
+            {{ each pic v i}}
+            <div class="mui-indicator {{ i==0?'mui-active':''}}"></div>
+           {{/each}}
+
+        </div>
+    </div>
+    <div class="proName item">
+        <strong>{{ proName}}</strong>
+    </div>
+    <!--商品价格-->
+    <div class="item">
+        价格：
+        <span  class="price">&yen;{{ price }}</span>
+        <span  class="oldPrice">&yen;{{ oldPrice}}</span>
+    </div>
+    <!--尺码-->
+    <div class="item size">
+        尺码:
+        {{ each sizeArray v i}}
+        <span>{{ v}}</span>
+        {{/each}}
+    </div>
+
+    <div class="num item">
+        数量：
+        <div class="mui-numbox" data-numbox-step='1' data-numbox-min='1' data-numbox-max='{{ num}}'>
+            <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+            <input class="mui-numbox-input" type="number" value="1"/>
+            <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+        </div>
+        <span class="tips">剩余数量：{{ num }}双</span>
+    </div>
+    <!--商品详情-->
+    <div class="proDesc item">
+        详情：{{ proDesc}}
+    </div>
 </script>
 
 <script src="lib/mui/js/mui.js"></script>

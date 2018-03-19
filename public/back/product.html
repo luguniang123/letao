@@ -59,7 +59,7 @@
 
         <!--内容-->
         <div class="lt_content">
-            <button  class="btn btn-default btn_add mb_20">添加商品</button>
+            <button  class="btn btn-default btn_add1 mb_20">添加商品</button>
             <!--//点这个添加的时候就可以去申请ajax-->
             <table class="table table-bordered table-hover">
                 <!--全局css -表格-鼠标悬停会有灰色背景的效果 鼠标悬停与条纹状表格（隔行变色）两个选择一个-->
@@ -184,8 +184,10 @@
                         <!--思路：想要button的样式，input:file的功能，就让他们层叠在一起，下一个opacity：0;-->
                         <div class="file_box">
                             <button class="btn btn-default">上传图片</button>
+
                             <input type="file" id="fileupload" data-url="/product/addProductPic"
                                    name="pic1"  class="btn btn-default" value="上传图片" multiple/>
+
                             <input type="hidden" name="productLogo"/>
                             <!--这里注意蹦出来是各种图片，用  ***input：file-->
                             <!--name根据接口文档，id是jquery-fileupload插件要求有一个input的框，id="fileupload" -->

@@ -1,0 +1,28 @@
+.myForm{
+    padding: 10px;
+
+}
+.myForm [name="vCode"]{
+    width: 65%;
+
+}
+.myForm .btn_getcode{
+    width: 30%;
+    padding: 0;
+    /*去掉默认的padding值*/
+    height: 40px;
+    line-height: 40px;
+}
+
+.myForm .btn_getcode.disabled{
+    background-color: #999;
+    border-color:#999;
+}
+.myForm .btn_register{
+    /*框架把表单里面的按钮都做成右对齐，w15%*/
+    width: 100%;
+    padding: 0;
+    /*去掉默认的padding值*/
+    height: 40px;
+    line-height: 40px;
+}

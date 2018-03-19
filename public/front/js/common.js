@@ -19,6 +19,7 @@ gallery.slider({
 //封装地址栏
 function getSearch(key){
     var search=location.search;
+  //
   //  console.log(search);
     search=decodeURI(search);
     //去掉问号
